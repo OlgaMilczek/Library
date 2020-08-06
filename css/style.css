@@ -107,6 +107,17 @@ body {
     border-bottom: 2px solid  rgb(20, 25, 116);
 }
 
+#book-conteiner {
+    grid-column-start: 1;
+    grid-column-end: 6;
+    width: 920px;
+    padding: 10px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, auto) repeat(2,120px) 50px;
+    text-align: left;
+}
+
 .book-position {
     grid-column-start: 1;
     grid-column-end: 6;
@@ -141,4 +152,28 @@ body {
     transform: scale(1.2);
     cursor: pointer;
     opacity: 1;
+}
+
+.noButton {
+    background: none;
+    background-color:rgb(255, 255, 255);
+    color: rgb(20,25,116);
+    justify-self: center;
+    font-weight: bold;
+    border: 0px;
+    opacity: 0.75;
+    color: rgb(116, 20, 20);
+    cursor: pointer;
+}
+
+.yesButton {
+    background: none;
+    background-color:rgb(255, 255, 255);
+    color: rgb(20,25,116);
+    justify-self: center;
+    font-weight: bold;
+    border: 0px;
+    opacity: 0.75;
+    color: rgb(59, 131, 41);
+    cursor: pointer;
 }
