@@ -23,8 +23,9 @@ function addBookToLibrary() {
 
 function render() {
     bookContainer.innerHTML = "";
-    myLibrary.forEach(book => {
+    myLibrary.forEach((book, index) => {
         const bookLine = document.createElement('div');
+        bookLine.setAttribute('data-index', index);
         bookLine.classList.add('book-position');
         for (let prop in book) {
             const bookProp = document.createElement('div');
@@ -87,18 +88,19 @@ function cleanForm() {
 }
 
 function readChange() {;
-    if (this.textContent === 'No') {
-        this.textContent = 'Yes';
+    let booktoChange =  myLibrary[this.parentNode.parentNode.dataset.index];
+    console.log(booktoChange.read)
+    if (booktoChange.read === 'true') {
+            booktoChange.read = 'false'
     }
     else {
-        this.textContent = 'No';
+        booktoChange.read = 'true'
     }
-    this.classList.toggle('yesButton');
-    this.classList.toggle('noButton');
+    render()
 }
 
 function deleteBook() {
-    const deleteBookTitle = this.parentElement.firstChild.textContent;
-    myLibrary = myLibrary.filter(book => book.title !== deleteBookTitle);
+    let booktoDelete =  myLibrary[this.parentNode.dataset.index];
+    myLibrary = myLibrary.filter(book => book !== booktoDelete);
     render();
 }
