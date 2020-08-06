@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>My library</title>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="css/style.css">
+
+    </head>
+
+    <body> 
+        <div id='conteiner'>
+            
+            <div id='title'>Olga's books</div>
+            <button id='new-book' class='button'>Add Book</button>
+
+            <div id='now-book-form'>
+                <form>
+                    <label class="book-form"> Title: </label> <input type="text" name="title" required="required" placeholder="Enter book title."/>
+                    <label class="book-form"> Author: </label> <input type="text" name="author" required="required" placeholder="Enter book author."/>
+                    <label class="book-form"> Pages: </label> <input type="number" name="pages" required="required" />
+                    <span class="book-form"> Did you read it? </span>
+				    <input id="read_yes" type="radio" name="read" value="true"/> <label for="read_yes">Yes</label>
+                    <input id="read_no" type="radio" name="read" value="false" checked="checked"/> <label for="read_no">No</label>
+                    <button class="book-form button" id='add-book'>Add</button>
+                </form>
+            </div>
+            <div id='overlay'></div> 
+            
+            <div class='book-header'>
+                <div id='book-title' >Title</div>
+                <div id='book-author'>Author</div>
+                <div id='book-pages'>Pages</div>
+                <div id='book-read'>Read</div>
+                <div id='book-del'> </div>
+            </div>
+
+
+            </div>
+        </div>
+
+
+        <script src='script.js'></script>
+    </body>
+</html>

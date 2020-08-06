@@ -1,0 +1,144 @@
+body {
+    height: 100%;
+    background: rgb(20,25,116);
+    background: linear-gradient(180deg, rgba(20,25,116,1) 0%, rgba(93,119,177,1) 54%, rgba(197,211,230,1) 100%); 
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#conteiner {
+    max-width: 960px;
+    margin: 50px auto;
+    background-color:rgb(255, 255, 255);
+    padding: 20px;
+    box-shadow: 0px 0px 50px 0px rgba(5, 8, 59, 0.75);
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+}
+
+#title {
+    font-family: 'Lobster', cursive;
+    font-size: 60px;
+    color:  rgb(20,25,116);
+    grid-column-start: 1;
+    grid-column-end: 5;
+    padding: 20px;
+}
+
+.button {
+    grid-column: 5;
+    justify-self: center;
+    width: 100px;
+    height: 35px;
+    padding: 5px !important;
+    color:  rgb(255, 255, 255);
+    background-color: rgb(20,25,116);
+    margin: auto;
+    border: 0px;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: rgba(20, 25, 116, 0.75);
+}
+
+.button:active {
+    box-shadow: 0px 0px 10px 0px rgba(5, 8, 59, 0.75);
+}
+
+#now-book-form {
+    padding: 30px;
+    padding-top: 10px;
+    position: fixed;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    border: 2px solid  rgb(20, 25, 116);
+    background-color:  rgb(255, 255, 255);
+    font: inherit;
+    border-radius: 20px;
+    z-index: 10;
+    max-width: 60%;
+    box-shadow: 0px 0px 10px 0px rgba(5, 8, 59, 0.75);
+}
+
+#now-book-form.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#overlay {
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(5, 8, 59, 0.5);
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0;
+}
+
+#overlay.active {
+    pointer-events: all;
+    opacity: 1;
+}
+
+
+.book-form {
+    display: block;
+    font: inherit;
+    margin-top: 20px;
+}
+
+.book-header {
+    grid-column-start: 1;
+    grid-column-end: 6;
+    width: 920px;
+    padding: 10px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, auto) repeat(2,120px) 50px;
+    text-align: left;
+    border-bottom: 2px solid  rgb(20, 25, 116);
+}
+
+.book-position {
+    grid-column-start: 1;
+    grid-column-end: 6;
+    width: 920px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, auto) repeat(2,120px) 50px;
+    text-align: left;
+}
+
+.book-position:hover {
+    box-shadow: 0px 0px 5px 0px rgba(5, 8, 59, 0.75);
+    transform: scale(1.01);
+}
+
+.dellButton {
+    background-image: url('krzyzyk.png');
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: 0px 4px;
+    background-color:rgb(255, 255, 255);
+    color: rgb(20,25,116);
+    justify-self: center;
+    font-weight: bold;
+    border: 0px;
+    opacity: 0.75;
+}
+
+.dellButton:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+    opacity: 1;
+}
