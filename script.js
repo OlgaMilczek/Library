@@ -1,59 +1,67 @@
-let myLibrary = [];
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read; 
+class Book {
+    constructor (title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read; 
+    }
 }
 
-function addBookToLibrary() {
-    const newBookTitle = document.querySelector('input[name=title]').value;
-    const newBookAuthor = document.querySelector('input[name=author]').value;
-    const newBookPages = document.querySelector('input[name="pages"]').value;
-    const newBookRead = document.querySelector('input[name=read]:checked').value;
-    let newBook = new Book(newBookTitle, newBookAuthor, newBookPages, newBookRead);
-    myLibrary.push(newBook);
-    render();
-    return (newBook);
+class Library { 
+    constructor() {
+        this.books = [];
+    }
+
+
+    addBookToLibrary() {
+        const newBookTitle = document.querySelector('input[name=title]').value;
+        const newBookAuthor = document.querySelector('input[name=author]').value;
+        const newBookPages = document.querySelector('input[name="pages"]').value;
+        const newBookRead = document.querySelector('input[name=read]:checked').value;
+        let newBook = new Book(newBookTitle, newBookAuthor, newBookPages, newBookRead);
+        this.books.push(newBook);
+        this.render();
+        return (newBook);
   }
 
-  const bookContainer = document.querySelector('#book-conteiner');
-
-
-function render() {
-    bookContainer.innerHTML = "";
-    myLibrary.forEach((book, index) => {
-        const bookLine = document.createElement('div');
-        bookLine.setAttribute('data-index', index);
-        bookLine.classList.add('book-position');
-        for (let prop in book) {
-            const bookProp = document.createElement('div');
-            if(prop === 'read') {
-                const yesNoButton = document.createElement('button');
-                if (book[prop]==='true') {
-                    yesNoButton.textContent = "Yes";
-                    yesNoButton.classList.add('yesButton');
+    render() {
+        const bookContainer = document.querySelector('#book-conteiner');
+        bookContainer.innerHTML = "";
+        this.books.forEach((book, index) => {
+            const bookLine = document.createElement('div');
+            bookLine.setAttribute('data-index', index);
+            bookLine.classList.add('book-position');
+            for (let prop in book) {
+                const bookProp = document.createElement('div');
+                if(prop === 'read') {
+                    const yesNoButton = document.createElement('button');
+                    if (book[prop]==='true') {
+                        yesNoButton.textContent = "Yes";
+                        yesNoButton.classList.add('yesButton');
+                    }
+                    else {
+                        yesNoButton.textContent = "No";
+                        yesNoButton.classList.add('noButton');
+                    }
+                    yesNoButton.addEventListener('click', readChange);
+                    bookProp.appendChild(yesNoButton);
                 }
                 else {
-                    yesNoButton.textContent = "No";
-                    yesNoButton.classList.add('noButton');
+                    bookProp.textContent = book[prop];
                 }
-                yesNoButton.addEventListener('click', readChange);
-                bookProp.appendChild(yesNoButton);
+                bookLine.appendChild(bookProp);
             }
-            else {
-                bookProp.textContent = book[prop];
-            }
-            bookLine.appendChild(bookProp);
-        }
-        const dellButton = document.createElement('button');
-        dellButton.classList.add('dellButton');
-        dellButton.addEventListener('click', deleteBook)
-        bookLine.appendChild(dellButton);
-        bookContainer.appendChild(bookLine);
-    });
+            const dellButton = document.createElement('button');
+            dellButton.classList.add('dellButton');
+            dellButton.addEventListener('click', deleteBook)
+            bookLine.appendChild(dellButton);
+            bookContainer.appendChild(bookLine);
+        });
+    }
 }
+
+let myLibrary = new Library;
 
 const newBookButton = document.querySelector('#new-book')
 const newBookAdded = document.querySelector('#add-book')
@@ -63,7 +71,7 @@ const form = document.querySelector('#now-book-form')
 newBookButton.addEventListener('click', openForm)
 
 newBookAdded.addEventListener('click', () => {
-    addBookToLibrary();
+    myLibrary.addBookToLibrary();
     closeForm();
     cleanForm();
 });
@@ -88,19 +96,18 @@ function cleanForm() {
 }
 
 function readChange() {;
-    let booktoChange =  myLibrary[this.parentNode.parentNode.dataset.index];
-    console.log(booktoChange.read)
+    let booktoChange =  myLibrary.books[this.parentNode.parentNode.dataset.index];
     if (booktoChange.read === 'true') {
             booktoChange.read = 'false'
     }
     else {
         booktoChange.read = 'true'
     }
-    render()
+    myLibrary.render()
 }
 
 function deleteBook() {
-    let booktoDelete =  myLibrary[this.parentNode.dataset.index];
-    myLibrary = myLibrary.filter(book => book !== booktoDelete);
-    render();
+    let booktoDelete =  myLibrary.books[this.parentNode.dataset.index];
+    myLibrary.books = myLibrary.books.filter(book => book !== booktoDelete);
+    myLibrary.render();
 }
