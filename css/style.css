@@ -114,7 +114,7 @@ body {
     padding: 10px;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(2, auto) repeat(2,120px) 50px;
+    grid-template-columns: repeat(2, 35%) repeat(2, 12.5%) 5%;
     text-align: left;
 }
 

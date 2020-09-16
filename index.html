@@ -18,15 +18,20 @@
             <button id='new-book' class='button'>Add Book</button>
 
             <div id='now-book-form'>
-                <div>
-                    <label class="book-form"> Title: </label> <input type="text" name="title"  placeholder="Enter book title."/>
-                    <label class="book-form"> Author: </label> <input type="text" name="author"  placeholder="Enter book author."/>
-                    <label class="book-form"> Pages: </label> <input type="number" name="pages" />
-                    <span class="book-form"> Did you read it? </span>
-				    <input id="read_yes" type="radio" name="read" value="true"/> <label for="read_yes">Yes</label>
-                    <input id="read_no" type="radio" name="read" value="false"/> <label for="read_no">No</label>
+                <form>
+                    <label for='title' class="book-form"> Title: </label> 
+                    <input type="text" name="title"  placeholder="Enter book title." required/>
+                    <label class="book-form"> Author: </label> 
+                    <input type="text" name="author"  placeholder="Enter book author." required/>
+                    <label class="book-form"> Pages: </label> 
+                    <input type="number" name="pages" required/>
+                    <fieldset>
+                        <legend class="book-form"> Did you read it?</legend>
+				        <input id="read_yes" type="radio" name="read" required value="true"/> <label for="read_yes">Yes</label>
+                        <input id="read_no" type="radio" name="read" required value="false" checked/> <label for="read_no">No</label>
+                    </fieldset>
                     <button class="book-form button" id='add-book'>Add</button>
-                </div>
+                </form>
             </div>
             <div id='overlay'></div> 
             
